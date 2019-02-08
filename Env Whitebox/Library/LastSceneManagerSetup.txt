@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Whitebox Implement .unity
+- path: Assets/TerrainV3Whitebox.unity
   isLoaded: 1
   isActive: 1

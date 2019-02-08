@@ -1,8 +1,9 @@
 //Maya ASCII 2018 scene
 //Name: Monolith.ma
-//Last modified: Thu, Feb 07, 2019 03:01:01 PM
+//Last modified: Thu, Feb 07, 2019 05:29:01 PM
 //Codeset: UTF-8
 requires maya "2018";
+requires -nodeType "gameFbxExporter" "gameFbxExporter" "1.0";
 currentUnit -l centimeter -a degree -t film;
 fileInfo "application" "maya";
 fileInfo "product" "Maya 2018";
@@ -81,6 +82,7 @@ createNode mesh -n "Monolith:pCone1Shape" -p "Monolith:pCone1";
 	setAttr ".iog[0].og[1].gcl" -type "componentList" 1 "f[26]";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
+	setAttr ".pv" -type "double2" 0.49067149474285543 0.48056848859414458 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr -s 92 ".uvst[0].uvsp[0:91]" -type "float2" 0.53339899 0.263441
 		 0.24825799 0.26366201 0.223176 0.074130997 0.557702 0.074244 0.533692 0.26398 0.25246501
@@ -239,6 +241,7 @@ createNode mesh -n "pCone1Shape" -p "pCone1";
 	setAttr ".iog[0].og[1].gcl" -type "componentList" 1 "f[26]";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
+	setAttr ".pv" -type "double2" 0.49067149474285543 0.48056848859414458 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr -s 92 ".uvst[0].uvsp[0:91]" -type "float2" 0.53339899 0.263441
 		 0.24825799 0.26366201 0.223176 0.074130997 0.557702 0.074244 0.533692 0.26398 0.25246501
@@ -397,6 +400,7 @@ createNode mesh -n "pCone2Shape" -p "pCone2";
 	setAttr ".iog[0].og[1].gcl" -type "componentList" 1 "f[26]";
 	setAttr ".vir" yes;
 	setAttr ".vif" yes;
+	setAttr ".pv" -type "double2" 0.49067149474285543 0.48056848859414458 ;
 	setAttr ".uvst[0].uvsn" -type "string" "map1";
 	setAttr -s 92 ".uvst[0].uvsp[0:91]" -type "float2" 0.53339899 0.263441
 		 0.24825799 0.26366201 0.223176 0.074130997 0.557702 0.074244 0.533692 0.26398 0.25246501
@@ -866,8 +870,7 @@ createNode animCurveTA -n "pCone2_rotateY";
 	rename -uid "55959570-F044-BE46-95E2-988FC79BA224";
 	setAttr ".tan" 18;
 	setAttr ".wgt" no;
-	setAttr -s 5 ".ktv[0:4]"  1 77.203434245977235 20 77.203434245977235
-		 40 77.203434245977235 60 77.203434245977235 80 77.203434245977235;
+	setAttr -s 5 ".ktv[0:4]"  1 0 20 90 40 180 60 270 80 360;
 createNode animCurveTA -n "pCone2_rotateZ";
 	rename -uid "B82C4BC0-1349-4492-146D-A1A3C1D231AE";
 	setAttr ".tan" 18;
@@ -937,9 +940,37 @@ createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "E9D42A15-754B-F0F7-B00B-49A0673845EA";
 	setAttr ".b" -type "string" "playbackOptions -min 1 -max 80 -ast 1 -aet 200 ";
 	setAttr ".st" 6;
+createNode gameFbxExporter -n "gameExporterPreset1";
+	rename -uid "E9E4F7EA-3B43-0D2E-2937-0F93A510B2B0";
+	setAttr ".pn" -type "string" "Model Default";
+	setAttr ".ils" yes;
+	setAttr ".ebm" yes;
+	setAttr ".inc" yes;
+	setAttr ".fv" -type "string" "FBX201800";
+createNode gameFbxExporter -n "gameExporterPreset2";
+	rename -uid "A8B747A5-434B-2F7E-32D5-DC94E05059B7";
+	setAttr ".pn" -type "string" "Anim Default";
+	setAttr ".ils" yes;
+	setAttr ".ilu" yes;
+	setAttr ".eti" 2;
+	setAttr ".ac[0].acn" -type "string" "MonolithAnim";
+	setAttr ".ac[0].acs" 1;
+	setAttr ".ac[0].ace" 80;
+	setAttr ".spt" 2;
+	setAttr ".ic" no;
+	setAttr ".ebm" yes;
+	setAttr ".fv" -type "string" "FBX201800";
+	setAttr ".exp" -type "string" "/Users/Claudi/Documents/0College Stuffs/LevelDesign2019/Env Whitebox/Assets/Animation";
+createNode gameFbxExporter -n "gameExporterPreset3";
+	rename -uid "3CAEA91D-1D4C-DAA1-D96B-C5A61F22D941";
+	setAttr ".pn" -type "string" "TE Anim Default";
+	setAttr ".ils" yes;
+	setAttr ".eti" 3;
+	setAttr ".ebm" yes;
+	setAttr ".fv" -type "string" "FBX201800";
 select -ne :time1;
-	setAttr ".o" 41;
-	setAttr ".unw" 41;
+	setAttr ".o" 78;
+	setAttr ".unw" 78;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
