@@ -5,12 +5,18 @@ ModelImporter:
   fileIDToRecycleName:
     100000: pCylinder1
     100002: //RootNode
+    100004: Spike:pCylinder1
     400000: pCylinder1
     400002: //RootNode
+    400004: Spike:pCylinder1
     2100000: pCylinder1Mat
+    2100002: initialShadingGroup
     2300000: pCylinder1
+    2300002: Spike:pCylinder1
     3300000: pCylinder1
+    3300002: Spike:pCylinder1
     4300000: pCylinder1
+    4300002: Spike:pCylinder1
   externalObjects: {}
   materials:
     importMaterials: 1
